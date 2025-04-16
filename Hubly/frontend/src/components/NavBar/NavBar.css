@@ -1,0 +1,34 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.nav img {
+  position: relative;
+  left: 50px;
+}
+
+.both-btns {
+  display: flex;
+  position: relative;
+  right: 70px;
+  gap: 10px;
+}
+
+.both-btns button {
+  width: 75px;
+  height: 35px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: none;
+}
+
+.btn-color1 {
+  background-color: white;
+}
+
+.btn-color2 {
+  background-color: #244779;
+  color: white;
+}

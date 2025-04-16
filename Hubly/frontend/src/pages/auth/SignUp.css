@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-signup {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inner-left-container-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 600px;
+}
+
+.left-panel-signup {
+  width: 470px;
+  height: 752px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  gap: 15px;
+}
+
+.main-logo-signup {
+  width: 142px;
+  height: 45px;
+  margin-top: 33px;
+  margin-left: 40px;
+}
+
+.sub-heading-signup {
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sub-heading-signup h3 {
+  font-size: 25px;
+  font-weight: 400;
+  color: #333333;
+  font-family: "Urbanist", sans-serif;
+}
+
+.sub-heading-signup a {
+  font-family: "Urbanist", sans-serif;
+  color: #4831d4;
+  font-size: 14px;
+}
+
+.form-div-signup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-signup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+label {
+  margin-bottom: 3px;
+  font-family: "Urbanist", sans-serif;
+  color: #666666;
+  font-size: 15px;
+}
+
+.terms-check-signup {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.terms-check-signup input {
+  width: 15px;
+}
+.terms-check-signup input:checked {
+  accent-color: black;
+}
+
+.terms-check-signup p {
+  font-family: "Urbanist", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.btn-signup {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #c3c3c3;
+  border: none;
+  font-size: 17px;
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+.footer-signup {
+  position: relative;
+  margin-left: -110px;
+  left: 35px;
+  top: 30px;
+  font-size: 13px;
+  color: #676b5f;
+  font-family: "Urbanist", sans-serif;
+}
