@@ -4,7 +4,7 @@ import "./SignIn.css";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -45,7 +45,12 @@ export default function SignIn() {
 
   return (
     <div className="container">
-      <img className="main-logo" src={logo} alt="" />
+      <img
+        className="main-logo"
+        src={logo}
+        alt=""
+        onClick={() => navigate("/home")}
+      />
       <div className="inner-left-container">
         <div className="left-panel">
           <div className="sub-heading">
@@ -82,9 +87,9 @@ export default function SignIn() {
             </a>
             <span>
               Don't have an account?{" "}
-              <a className="sign-up" href="#">
+              <Link className="sign-up" to="/signup">
                 Sign up
-              </a>
+              </Link>
             </span>
           </div>
           <p className="footer">

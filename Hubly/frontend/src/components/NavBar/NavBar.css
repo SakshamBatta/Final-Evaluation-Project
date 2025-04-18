@@ -6,7 +6,10 @@
 
 .nav img {
   position: relative;
-  left: 50px;
+  left: 70px;
+  width: 170px;
+  top: -7px;
+  cursor: pointer;
 }
 
 .both-btns {
@@ -17,11 +20,13 @@
 }
 
 .both-btns button {
-  width: 75px;
-  height: 35px;
-  font-size: 13px;
+  width: 84px;
+  height: 38px;
+  font-size: 16px;
   border-radius: 8px;
   border: none;
+  font-family: "Barlow", sans-serif;
+  cursor: pointer;
 }
 
 .btn-color1 {

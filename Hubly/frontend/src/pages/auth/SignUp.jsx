@@ -4,7 +4,7 @@ import "./SignUp.css";
 import { useRef, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -78,12 +78,17 @@ export default function SignUp() {
 
   return (
     <div className="container-signup">
-      <img className="main-logo-signup" src={logo} alt="" />
+      <img
+        className="main-logo-signup"
+        src={logo}
+        alt=""
+        onClick={() => navigate("/home")}
+      />
       <div className="inner-left-container-signup">
         <div className="left-panel-signup">
           <div className="sub-heading-signup">
             <h3>Create an account</h3>
-            <a href="#">Sign in instead</a>
+            <Link to="/signin">Sign in instead</Link>
           </div>
           <div className="form-div-signup">
             <form className="form-signup" onSubmit={handleSubmit}>
@@ -131,7 +136,7 @@ export default function SignUp() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
               <div className="terms-check-signup">
-                <input type="checkbox-signup" ref={checkboxRef} />
+                <input type="checkbox" ref={checkboxRef} />
                 <p>
                   By creating an account, I agree to our <u>Terms of use</u>{" "}
                   <br /> and <u>Privacy Policy</u>
