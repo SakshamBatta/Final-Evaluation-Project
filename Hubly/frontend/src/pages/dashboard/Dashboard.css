@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.container-dashboard {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.inner-container-dashboard {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.left-inner-dashboard {
+  width: 6%;
+  height: 100%;
+  background-color: #fafbfc;
+  border-right: 1px solid gainsboro;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-icon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.sidebar-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.icon-label {
+  font-size: 10px;
+  font-family: "Inter", sans-serif;
+  color: #424242;
+  position: absolute;
+  top: 23px;
+  padding: 2px 6px;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.dashboard-logo {
+  width: 45px;
+  height: 45px;
+  margin-top: 10px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+}
+
+.right-inner-dashboard {
+  width: 94%;
+}
+
+.heading-dashboard {
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #6a6b70;
+  margin-top: 18px;
+  margin-left: 20px;
+}
+
+.search-panel-dashboard {
+  width: 253px;
+  height: 44px;
+  border: 1px solid #e7e7e7;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 13px;
+  border-radius: 4px;
+  margin-left: 20px;
+  margin-top: 42px;
+}
+
+.search-panel-dashboard img {
+  width: 17.93px;
+  height: 18px;
+  margin-left: 40px;
+}
+
+.search-panel-dashboard h4 {
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #b6b6b6;
+}
+
+.mid-level-tabs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-top: 48px;
+  margin-left: 20px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.mid-level-tabs h3 {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #888888;
+  font-weight: 500;
+}
+
+.mid-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.mid-tab-content {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* spacing between icon and text */
+}
+
+.tab-underline {
+  height: 3px;
+  width: 100%;
+  background-color: transparent;
+}
+
+.mid-tab.active .tab-underline {
+  background-color: #184e7f;
+}
+
+.ticket-section {
+  width: 100%;
+  height: 100%;
+}
+
+.inner-ticket-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-tab {
+  width: 1380px;
+  height: 205px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e7e7e7;
+  padding-top: 20px;
+  padding-left: 15px;
+  margin-top: 35px;
+  margin-left: 20px;
+  border-radius: 4px;
+}
+
+.ticket-upper-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ticket-heading-grp {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.ticket-dot {
+  border-radius: 50%;
+  background-color: #f8c985;
+  width: 25px;
+  height: 25px;
+}
+
+.ticket-name {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+}
+
+.ticket-time {
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  color: #84818a;
+  margin-right: 35px;
+}
+
+.ticket-message {
+  font-size: 18px;
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+.ticket-lower-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.time-ago {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  font-family: "Montserrat", sans-serif;
+  margin-right: 35px;
+}
+
+.ticket-divider {
+  width: 100%;
+  height: 1px;
+  color: #e7e7e7;
+  border: 1px solid;
+  margin-top: 40px;
+}
+
+.ticket-user-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-details {
+  display: flex;
+  margin-top: 10px;
+  gap: 12px;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.user {
+  width: 97.17px;
+  height: 41px;
+}
+
+.user h3 {
+  font-size: 12px;
+  font-weight: 500;
+  color: #84818a;
+  font-family: "Montserrat", sans-serif;
+}
+
+.user p {
+  font-size: 9px;
+  color: #84818a;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+
+.pic {
+  width: 30px;
+  height: 30px;
+}
+
+.ticket-link {
+  margin-left: 1085px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #184e7f;
+}
