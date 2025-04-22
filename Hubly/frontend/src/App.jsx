@@ -6,6 +6,9 @@ import SignUp from "./pages/auth/SignUp";
 import Dashboard from "./pages/dashboard/Dashboard";
 import SignIn from "./pages/auth/SignIn";
 import Home from "./pages/Home/Home";
+import Team from "./pages/team/team";
+import PrivateRoute from "./utils/PrivateRoute";
+import Settings from "./pages/settings/Settings";
 
 function App() {
   return (
@@ -14,7 +17,31 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/team"
+          element={
+            <PrivateRoute>
+              <Team />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <PrivateRoute>
+              <Settings />
+            </PrivateRoute>
+          }
+        />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

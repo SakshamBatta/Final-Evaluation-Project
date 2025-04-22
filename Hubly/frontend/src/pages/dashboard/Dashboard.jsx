@@ -1,29 +1,13 @@
 import "./Dashboard.css";
-import dashLogo from "../../assets/dashLogo.png";
-import contact from "../../assets/contact.png";
-import analytics from "../../assets/analytics.png";
-import chatBot from "../../assets/chatBot.png";
-import team from "../../assets/team.png";
-import homeSymbol from "../../assets/homeSymbol.png";
-import settings from "../../assets/settings.png";
 import search from "../../assets/search.png";
 import sms from "../../assets/sms.png";
 import user from "../../assets/user.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import SideBar from "../../components/SideBar/SideBar";
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState("Dashboard");
   const [activeMidTab, setActiveMidTab] = useState("All Tickets");
-
-  const tabs = [
-    { id: "Dashboard", img: homeSymbol, label: "Dashboard" },
-    { id: "Contact Center", img: contact, label: "Contact Center" },
-    { id: "Analytics", img: analytics, label: "Analytics" },
-    { id: "Chat bot", img: chatBot, label: "Chat bot" },
-    { id: "Team", img: team, label: "Team" },
-    { id: "Setting", img: settings, label: "Setting" },
-  ];
 
   const tickets = [
     {
@@ -66,26 +50,7 @@ export default function Dashboard() {
   return (
     <div className="container-dashboard">
       <div className="inner-container-dashboard">
-        <div className="left-inner-dashboard">
-          <img src={dashLogo} alt="" className="dashboard-logo" />
-
-          <div className="sidebar">
-            {tabs.map((tab) => (
-              <div
-                key={tab.id}
-                className={`sidebar-icon ${
-                  activeTab === tab.id ? "active" : ""
-                } `}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                <img src={tab.img} alt={tab.label} className="sidebar-img" />
-                {activeTab === tab.id && (
-                  <span className="icon-label">{tab.label}</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+        <SideBar />
         <div className="right-inner-dashboard">
           <h3 className="heading-dashboard">Dashboard</h3>
           <div className="search-panel-dashboard">

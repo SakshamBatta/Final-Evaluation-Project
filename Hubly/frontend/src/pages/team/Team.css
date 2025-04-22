@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+.group-div-team {
+  height: 100%;
+}
+
+.line1-team {
+  margin-top: 45px;
+  width: 100%;
+  background-color: #6a6a6a;
+  height: 1px;
+}
+
+.line2-team {
+  margin-top: 34px;
+  width: 100%;
+  background-color: #6a6a6a;
+  height: 1px;
+}
+
+.title-team-div {
+  display: flex;
+  gap: 120px;
+  justify-content: flex-start;
+  position: relative;
+  top: 17.3px;
+  left: 180px;
+}
+
+.name-icon-team {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+}
+
+.name-icon-team img {
+  width: 12px;
+  height: 12px;
+}
+
+.titles1-team {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #184e7f;
+}
+.titles2-team {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #184e7f;
+  margin-left: -30px;
+}
+.titles3-team {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #184e7f;
+  margin-left: 43px;
+}
+.titles4-team {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #184e7f;
+  margin-left: 78px;
+}
+
+.member-group-team {
+  display: flex;
+  /* gap: 10px; */
+  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 60px;
+  align-items: center;
+}
+
+.edit-delete-team {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.edit-delete-team img {
+  cursor: pointer;
+}
+
+.add-team {
+  width: 197px;
+  height: 40px;
+  background-color: #184e7f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  margin-top: 24px;
+  margin-left: 1200px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.add-team img {
+  width: 20px;
+  height: 20px;
+}
+
+.profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.col-name {
+  width: 200px;
+  font-weight: 500;
+  margin-left: 80px;
+}
+
+.col-phone {
+  width: 200px;
+}
+
+.col-email {
+  width: 250px;
+}
+
+.col-role {
+  width: 100px;
+}
