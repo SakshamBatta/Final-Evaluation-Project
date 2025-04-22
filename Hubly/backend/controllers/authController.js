@@ -62,9 +62,32 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const user = await User.findOne({ email });
+    let user = await User.findOne({ email });
+
     if (!user) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      const invited = await InvitedTeam.findOne({ email });
+
+      if (!invited) {
+        return res.status(400).json({ message: "Invalid credentials" });
+      }
+
+      const admin = await User.findOne(invited.invited_by);
+
+      const isMatch = await bcrypt.compare(password, admin.password);
+
+      if (!isMatch) {
+        return res.status(401).json({ message: "Invalid credentials" });
+      }
+
+      user = new User({
+        firstName: invited.username,
+        email: invited.email,
+        password: admin.password,
+        role: "team_member",
+        admin_id: admin._id,
+      });
+
+      await user.save();
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -73,9 +96,13 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
-    });
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1d",
+      }
+    );
 
     res.status(200).json({
       user: {
