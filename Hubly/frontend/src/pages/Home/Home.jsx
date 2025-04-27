@@ -15,9 +15,9 @@ import Check from "../../assets/Check.png";
 import play from "../../assets/play.png";
 import logo from "../../assets/logo.png";
 import footer from "../../assets/footer.png";
-
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import Chat from "../../components/Chat/Chat";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -26,6 +26,7 @@ export default function Home() {
       <div className="nav-div">
         <NavBar />
       </div>
+
       <section className="section1">
         <div className="section1-div">
           <div className="left-div">
@@ -61,6 +62,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Chat />
       <div className="mid-div">
         <img src={Adobe} alt="" />
         <img src={elastic} alt="" />

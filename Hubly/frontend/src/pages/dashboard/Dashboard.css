@@ -126,6 +126,7 @@
   align-items: center;
   gap: 10px;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .mid-tab-content {
@@ -240,7 +241,7 @@
   align-items: center;
 }
 
-.user-details {
+.user-details-ticket {
   display: flex;
   margin-top: 10px;
   gap: 12px;

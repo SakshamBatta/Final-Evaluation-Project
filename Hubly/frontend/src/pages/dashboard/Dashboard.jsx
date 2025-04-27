@@ -3,47 +3,45 @@ import search from "../../assets/search.png";
 import sms from "../../assets/sms.png";
 import user from "../../assets/user.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SideBar from "../../components/SideBar/SideBar";
+import axios from "axios";
 
 export default function Dashboard() {
   const [activeMidTab, setActiveMidTab] = useState("All Tickets");
+  const [tickets, setTickets] = useState([]);
 
-  const tickets = [
-    {
-      id: 1,
-      ticket_name: "Ticket# 2023-00123",
-      created_at: "Posted at 12:45 AM",
-      time_ago: "10:00",
-      message: "Hey!",
-      username: "John Snow",
-      phone: "+91 0000000000",
-      email: "example@gmail.com",
-      label: "Open Ticket",
-    },
-    {
-      id: 2,
-      ticket_name: "Ticket# 2023-00123",
-      created_at: "Posted at 12:45 AM",
-      time_ago: "10:00",
-      message: "Hey!",
-      username: "John Snow",
-      phone: "+91 0000000000",
-      email: "example@gmail.com",
-      label: "Open Ticket",
-    },
-    {
-      id: 3,
-      ticket_name: "Ticket# 2023-00123",
-      created_at: "Posted at 12:45 AM",
-      time_ago: "10:00",
-      message: "Hey!",
-      username: "John Snow",
-      phone: "+91 0000000000",
-      email: "example@gmail.com",
-      label: "Open Ticket",
-    },
-  ];
+  useEffect(() => {
+    const getChats = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:3000/api/ticket/get/tickets`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+
+        setTickets(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getChats();
+  }, []);
+
+  function getTimeAgo(dateString) {
+    const now = new Date();
+    const created = new Date(dateString);
+    const diff = Math.floor((now - created) / 1000);
+
+    if (diff < 60) return "Just now";
+    if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
+    if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
+    return `${Math.floor(diff / 86400)} days ago`;
+  }
 
   const midTabs = ["All Tickets", "Resolved", "Unresolved"];
 
@@ -79,27 +77,33 @@ export default function Dashboard() {
                   <div className="ticket-upper-tab">
                     <div className="ticket-heading-grp">
                       <div className="ticket-dot"></div>
-                      <div className="ticket-name">{ticket.ticket_name}</div>
+                      <div className="ticket-name">{ticket.title}</div>
                     </div>
-                    <div className="ticket-time">{ticket.created_at}</div>
+                    <div className="ticket-time">{ticket.date}</div>
                   </div>
                   <div className="ticket-lower-tab">
-                    <div className="ticket-message">{ticket.message}</div>
-                    <div className="time-ago">{ticket.time_ago}</div>
+                    <div className="ticket-message">{ticket.lastMsg}</div>
+                    <div className="time-ago">{getTimeAgo(ticket.date)}</div>
                   </div>
                   <div className="ticket-divider"></div>
                   <div className="ticker-user-details">
-                    <div className="user-details">
+                    <div className="user-details-ticket">
                       <div className="user-photo">
                         <img className="pic" src={user} alt="" />
                       </div>
                       <div className="user">
-                        <h3>{ticket.username}</h3>
-                        <p>{ticket.phone}</p>
-                        <p>{ticket.email}</p>
+                        <h3>{ticket.userDetails.name}</h3>
+                        <p>{ticket.userDetails.phone}</p>
+                        <p>{ticket.userDetails.email}</p>
                       </div>
                       <div>
-                        <Link className="ticket-link">Open Ticket</Link>
+                        <Link
+                          to="/contact"
+                          state={{ ticketId: ticket.id }}
+                          className="ticket-link"
+                        >
+                          Open Ticket
+                        </Link>
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,497 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+.right-inner-dashboard-contact {
+  display: flex;
+  width: 100vw;
+}
+
+.all-contact-section {
+  width: 296px;
+  border-right: 1px solid #d1d6da;
+}
+
+.all-contact-section h4 {
+  margin-top: 70px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #888888;
+  margin-left: 8px;
+}
+
+.all-contact-section .line1 {
+  width: 40px;
+  background-color: #b9baba;
+  height: 3px;
+  margin-top: 2px;
+  margin-left: 8px;
+}
+
+.all-contact-section .line2 {
+  width: 284px;
+  background-color: #d7d8d8;
+  height: 1px;
+  position: relative;
+  bottom: 1px;
+}
+
+.contact-chat-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  border-right: 1px solid #d1d6da;
+}
+.contact-details-section {
+  width: 500px;
+}
+
+.chat-div-upper {
+  border-bottom: 1px solid #e4e4e4;
+  padding: 14px;
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  color: #86898c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.all-chats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.chat-pic {
+  width: 30px;
+  height: 30px;
+}
+
+.indi-chat {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: 15px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.indi-chat img {
+  border-radius: 50%;
+  background-color: #d9d9d9;
+}
+
+.indi-chat-details h5 {
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #5e9bd5;
+}
+
+.indi-chat-details p {
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  color: #9a9b9d;
+}
+
+.active-chat {
+  border-radius: 27px;
+  background-color: #efefef;
+}
+
+.chat-date-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-date-div p {
+  font-size: 13.3px;
+  font-family: "Inter", sans-serif;
+  color: #8c8e92;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.date-line1 {
+  background-color: #e4e4e4;
+  height: 1px;
+  width: 270px;
+}
+.date-line2 {
+  background-color: #e4e4e4;
+  height: 1px;
+  width: 270px;
+}
+.chat-msg-div {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.chat-msg-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.left {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.right {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.sender-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.left .sender-info {
+  flex-direction: row;
+}
+
+.right .sender-info {
+  flex-direction: row-reverse;
+}
+
+.msg-dp {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0 8px;
+  background-color: #ccc;
+}
+
+.msg-name {
+  font-size: 13.5px;
+  color: #5e9bd5;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+
+.msg-bubble {
+  background-color: #f1f1f1;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #333;
+  display: inline-block;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.chat-input-div {
+  width: 620px;
+  height: 106px;
+  border-radius: 8px;
+  border: 1px solid #d1d6da;
+  margin-left: 15px;
+  resize: none;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  color: #000000;
+}
+
+.chat-msg-wrapper {
+  position: relative;
+}
+
+.resolved-msg {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  color: #8c8c8c;
+  margin-left: 210px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.admin-send-btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 25px;
+  top: 75px;
+  cursor: pointer;
+}
+
+.contact-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-details-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 4px;
+}
+
+.user-details-header img {
+  width: 30px;
+  height: 30px;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+}
+
+.user-details-header p {
+  font-size: 13.1px;
+  font-family: "Inter", sans-serif;
+  color: #939598;
+}
+
+.details-heading {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #184e7f;
+  margin-left: 5px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 17px;
+  margin-left: 5px;
+}
+
+.final-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.user-chat {
+  display: flex;
+  width: 490px;
+  height: 38px;
+  border: 2px solid #d1d6da;
+  border-radius: 13px;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+}
+
+.user-chat p {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  color: #808080;
+}
+
+.user-chat img {
+  width: 20px;
+  height: 20px;
+}
+
+.team-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 17px;
+  margin-left: 5px;
+}
+
+.team-details-heading {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #184e7f;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.team-dropdown {
+  width: 200px;
+  position: relative;
+  font-family: "Inter", sans-serif;
+}
+
+.selected-option-team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 490px;
+  height: 38px;
+  border: 1px solid #d1d6da;
+  border-radius: 13px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.selected-option-team span {
+  font-size: 13.5px;
+  font-family: "Inter", sans-serif;
+  color: #808080;
+}
+
+.team-options-list {
+  margin-top: 16px;
+  width: 490px;
+  height: 160px;
+  padding: 12px 20px;
+  border: 1px solid #d1d6da;
+  border-radius: 13px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.separator-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.team-member-seperator {
+  width: 100%;
+  background-color: #d1d6da;
+  height: 1px;
+}
+
+.dropdown-img {
+  margin-left: auto;
+}
+
+.team-option-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.team-option-item span {
+  font-size: 13.5px;
+  font-family: "Inter", sans-serif;
+  color: #808080;
+}
+
+.selected-option-team .team-member-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.team-option-item .team-member-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.default-ticket-status {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 20px;
+  border-radius: 13px;
+  border: 1px solid #d1d6da;
+  width: 490px;
+  height: 38px;
+  padding: 20px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.default-ticket-status .ticket-status-img {
+  width: 20px;
+  height: 20px;
+}
+
+.default-ticket-status span {
+  font-size: 13.5px;
+  font-family: "Inter", sans-serif;
+  color: #808080;
+}
+
+.ticket-dropdown-img {
+  margin-left: auto;
+}
+
+.ticket-options-list p {
+  font-size: 13.5px;
+  font-family: "Inter", sans-serif;
+  color: #808080;
+  cursor: pointer;
+}
+
+.ticket-status-seperator {
+  width: 485px;
+  margin-left: -20px;
+  height: 1px;
+  background-color: #d1d6da;
+}
+
+.resolved-confirmation {
+  margin-top: 10px;
+  margin-left: 6px;
+  width: 490px;
+  height: 141px;
+  border-radius: 23px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 -4px 8px rgba(0, 0, 0, 0.08),
+    4px 0 8px rgba(0, 0, 0, 0.08), -4px 0 8px rgba(0, 0, 0, 0.08);
+  padding: 15px;
+}
+
+.resolved-confirmation p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+.resolved-confirmation .btns {
+  display: flex;
+  margin-top: 60px;
+  margin-left: 160px;
+  width: 100%;
+  gap: 10px;
+}
+
+.resolved-confirmation .btns .btn1 {
+  width: 150px;
+  height: 34px;
+  border-radius: 15px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #afafaf;
+  background-color: white;
+  cursor: pointer;
+}
+.resolved-confirmation .btns .btn2 {
+  width: 150px;
+  height: 34px;
+  border-radius: 15px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fafbfc;
+  background-color: #184e7f;
+  cursor: pointer;
+}
+
+.ticket-options-list {
+  border-radius: 13px;
+  border: 1px solid #d1d6da;
+  width: 490px;
+  height: auto;
+  padding: 18px 25px;
+  margin-left: 6px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
