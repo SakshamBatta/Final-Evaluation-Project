@@ -12,6 +12,7 @@ import axios from "axios";
 export default function Team() {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [members, setMembers] = useState([]);
+  const [deleteMemberEmail, setDeleteMemberEmail] = useState(null);
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -31,6 +32,20 @@ export default function Team() {
     };
     fetchTeam();
   }, []);
+
+  const deleteMember = async () => {
+    await axios.delete(`http://localhost:3000/api/admin/delete`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+
+      data: {
+        email: deleteMemberEmail,
+      },
+    });
+
+    setDeleteMemberEmail(null);
+  };
 
   return (
     <>
@@ -63,7 +78,32 @@ export default function Team() {
                     </div>
                     {member.role !== "admin" && (
                       <div className="edit-delete-team">
-                        <img src={edit} alt="" /> <img src={deletePic} alt="" />
+                        <img src={edit} alt="" />{" "}
+                        <img
+                          src={deletePic}
+                          alt=""
+                          onClick={() => {
+                            setDeleteMemberEmail(member.email);
+                          }}
+                        />
+                        {deleteMemberEmail === member.email && (
+                          <div className="delete-modal">
+                            <p>This Teammate will be deleted</p>
+                            <div className="btns">
+                              <button
+                                className="btn1"
+                                onClick={() => {
+                                  setDeleteMemberEmail(null);
+                                }}
+                              >
+                                Cancel
+                              </button>
+                              <button className="btn2" onClick={deleteMember}>
+                                Confirm
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>

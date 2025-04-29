@@ -94,14 +94,18 @@
 .search-panel-dashboard img {
   width: 17.93px;
   height: 18px;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
-.search-panel-dashboard h4 {
+.search-panel-dashboard input {
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   color: #b6b6b6;
+  border: none;
+  margin-top: 15px;
+  margin-left: -10px;
+  outline: none;
 }
 
 .mid-level-tabs {

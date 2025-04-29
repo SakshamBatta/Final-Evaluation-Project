@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+.main-content-analytics {
+  padding: 40px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.missed-chats-analytics {
+  width: 702px;
+  height: 408px;
+}
+
+.missed-chats-analytics h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #00d907;
+}
+
+.average-time-analytics {
+  width: 770px;
+}
+
+.average-time-div {
+  display: flex;
+  gap: 14px;
+}
+
+.average-time-div p {
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 30px;
+}
+
+.average-time-analytics h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #00d907;
+  margin-bottom: 20px;
+}
+
+.average-time-div h2 {
+  font-size: 25px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #00d907;
+  position: relative;
+  left: 35px;
+}
+
+.resolved-tickets-analytics {
+  width: 760px;
+}
+
+.resolved-tickets-analytics h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #00d907;
+  margin-bottom: 10px;
+}
+
+.resolved-div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.resolved-div p {
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 20px;
+}
+
+.resolved-div h2 {
+  font-size: 25px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #00d907;
+}
+
+.total-chats-analytics h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.total-chats-div {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.total-chats-div h2 {
+  font-size: 25px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #00d907;
+  margin-top: -30px;
+}
+
+.total-chats-div p {
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 20px;
+}
+
+.circle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 30px;
+  bottom: 20px;
+}
+
+.circle {
+  width: 93.3px;
+  height: 93.3px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.circle-inner {
+  background: white;
+  width: 70.3px;
+  height: 70.3px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-inner span {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Nunito", sans-serif;
+}

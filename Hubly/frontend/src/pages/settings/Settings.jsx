@@ -4,6 +4,7 @@ import "./Settings.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
+import info from "../../assets/info.png";
 
 export default function Settings() {
   const [profile, setProfile] = useState({
@@ -97,31 +98,61 @@ export default function Settings() {
                     setProfile({ ...profile, lastName: e.target.value })
                   }
                 />
-                <label>Email</label>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={profile.email}
-                  onChange={(e) =>
-                    setProfile({ ...profile, email: e.target.value })
-                  }
-                />
-                <label>Password</label>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  onChange={(e) =>
-                    setProfile({ ...profile, password: e.target.value })
-                  }
-                />
-                <label>Confirm Password</label>
-                <input
-                  type="password"
-                  placeholder="Confirm Password"
-                  onChange={(e) =>
-                    setProfile({ ...profile, confirmPassword: e.target.value })
-                  }
-                />
+                <div className="input-with-tooltip">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={profile.email}
+                    onChange={(e) =>
+                      setProfile({ ...profile, email: e.target.value })
+                    }
+                  />
+                  <div className="tooltip-container">
+                    <img src={info} className="info-icon" alt="info" />
+                    <div className="tooltip-text">
+                      User will be logged out immediately
+                    </div>
+                  </div>
+                </div>
+
+                <div className="input-with-tooltip">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    onChange={(e) =>
+                      setProfile({ ...profile, password: e.target.value })
+                    }
+                  />
+                  <div className="tooltip-container">
+                    <img src={info} className="info-icon" alt="info" />
+                    <div className="tooltip-text">
+                      User will be logged out immediately
+                    </div>
+                  </div>
+                </div>
+
+                <div className="input-with-tooltip">
+                  <label>Confirm Password</label>
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    onChange={(e) =>
+                      setProfile({
+                        ...profile,
+                        confirmPassword: e.target.value,
+                      })
+                    }
+                  />
+                  <div className="tooltip-container">
+                    <img src={info} className="info-icon" alt="info" />
+                    <div className="tooltip-text">
+                      User will be logged out immediately
+                    </div>
+                  </div>
+                </div>
+
                 <button className="settings-form-btn" onClick={handleSubmit}>
                   Save
                 </button>

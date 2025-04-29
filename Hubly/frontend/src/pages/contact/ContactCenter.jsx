@@ -11,6 +11,7 @@ import arrowDown from "../../assets/arrowDown.png";
 import React from "react";
 import ticketImg from "../../assets/ticketStatus.png";
 import adminSend from "../../assets/adminSend.png";
+import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
 export default function ContactCenter() {
@@ -18,11 +19,22 @@ export default function ContactCenter() {
   const [chats, setChats] = useState([]);
   const [teamMembers, setTeamMembers] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [confirmAssignMember, setConfirmAssignMember] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [ticketStatusIsOpen, setTicketStatusIsOpen] = useState(false);
   const [adminMessage, setAdminMessage] = useState("");
   const [resolvedConfirmation, setResolvedConfirmation] = useState(false);
+  const [assignConfirmation, setAssignConfirmation] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const location = useLocation();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decoded = jwtDecode(token);
+      setCurrentUser(decoded);
+    }
+  }, []);
 
   useEffect(() => {
     if (location.state?.ticketId && chats.length > 0) {
@@ -39,6 +51,8 @@ export default function ContactCenter() {
       setSelectedChat(chats[0]);
     }
   }, [chats, location.state]);
+
+  console.log(confirmAssignMember);
 
   useEffect(() => {
     const getChats = async () => {
@@ -73,7 +87,6 @@ export default function ContactCenter() {
           }
         );
         setTeamMembers(res.data.team);
-        setSelectedTeam(res.data.team[0]);
       } catch (error) {
         console.log(error);
       }
@@ -110,6 +123,28 @@ export default function ContactCenter() {
       ...prev,
       status: "Resolved",
     }));
+  };
+
+  const assignMember = async () => {
+    await axios.put(
+      `http://localhost:3000/api/ticket/assign`,
+      {
+        ticketId: selectedChat.id,
+        memberId: confirmAssignMember.user_id,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    setSelectedChat((prev) => ({
+      ...prev,
+      assigned_to: confirmAssignMember.user_id,
+    }));
+    setSelectedTeam(confirmAssignMember);
+    setAssignConfirmation(false);
+    setIsOpen(false);
   };
 
   return (
@@ -185,6 +220,11 @@ export default function ContactCenter() {
 
                 {selectedChat?.status === "Resolved" ? (
                   <p className="resolved-msg">This chat has been resolved</p>
+                ) : selectedChat?.assigned_to !== currentUser?.id ? (
+                  <p className="assign-msg">
+                    This chat is assigned to new team member. You no longer have
+                    access.
+                  </p>
                 ) : (
                   <div className="chat-msg-wrapper">
                     <textarea
@@ -233,11 +273,24 @@ export default function ContactCenter() {
                   <p className="team-details-heading">Teammates</p>
                   <div className="team-dropdown">
                     <div
-                      className="selected-option-team"
+                      className={`selected-option-team ${
+                        currentUser?.role === "team_member"
+                          ? "disabled-dropdown"
+                          : ""
+                      }`}
                       onClick={() => setIsOpen(!isOpen)}
                     >
                       <img className="team-member-img" src={user} alt="" />
-                      <span>{selectedTeam?.name}</span>
+                      <span>
+                        {(currentUser?.id === selectedChat?.assigned_to
+                          ? currentUser?.name
+                          : teamMembers.find(
+                              (member) =>
+                                member.user_id === selectedChat?.assigned_to
+                            )?.name) ||
+                          selectedTeam?.name ||
+                          "Select Member"}
+                      </span>
                       <img className="dropdown-img" src={arrowDown} alt="" />
                     </div>
                     {isOpen && (
@@ -247,8 +300,8 @@ export default function ContactCenter() {
                             <div
                               className="team-option-item"
                               onClick={() => {
-                                setSelectedTeam(member);
-                                setIsOpen(false);
+                                setConfirmAssignMember(member);
+                                setAssignConfirmation(true);
                               }}
                             >
                               <img
@@ -269,6 +322,25 @@ export default function ContactCenter() {
                       </div>
                     )}
                   </div>
+                  {assignConfirmation && (
+                    <div className="assign-confirmation">
+                      <p>Chat would be assigned to Different team member</p>
+                      <div className="btns">
+                        <button
+                          className="btn1"
+                          onClick={() => {
+                            setAssignConfirmation(false);
+                            setIsOpen(false);
+                          }}
+                        >
+                          Cancel
+                        </button>
+                        <button className="btn2" onClick={assignMember}>
+                          Confirm
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="ticket-status-details">
                   <div

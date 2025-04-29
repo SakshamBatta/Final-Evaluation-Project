@@ -66,4 +66,53 @@
   font-family: "Poppins", sans-serif;
   position: relative;
   left: 1000px;
+  cursor: pointer;
+}
+.input-with-tooltip {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-with-tooltip input {
+  width: 100%;
+  padding-right: 35px;
+}
+
+.tooltip-container {
+  position: absolute;
+  top: 51px;
+  left: 440px;
+  transform: translateY(-50%);
+}
+
+.tooltip-container .tooltip-text {
+  visibility: hidden;
+  width: 231px;
+  height: 40px;
+  background-color: #ffffff;
+  color: #7c7c7c;
+  text-align: center;
+  border-radius: 13px;
+  padding: 7px;
+  position: absolute;
+  font-size: 14px;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 -4px 8px rgba(0, 0, 0, 0.08),
+    4px 0 8px rgba(0, 0, 0, 0.08), -4px 0 8px rgba(0, 0, 0, 0.08);
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.info-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }

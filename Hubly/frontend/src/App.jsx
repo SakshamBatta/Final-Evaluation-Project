@@ -12,6 +12,7 @@ import Settings from "./pages/settings/Settings";
 import ContactCenter from "./pages/contact/ContactCenter";
 import Chatbot from "./pages/chatbot/Chatbot";
 import { ChatbotProvider } from "./context/ChatbotContext";
+import Analytics from "./pages/analytics/Analytics";
 
 function App() {
   return (
@@ -59,6 +60,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Chatbot />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/analytics"
+            element={
+              <PrivateRoute>
+                <Analytics />
               </PrivateRoute>
             }
           />

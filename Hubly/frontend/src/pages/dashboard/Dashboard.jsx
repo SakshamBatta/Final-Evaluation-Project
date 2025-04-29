@@ -10,6 +10,7 @@ import axios from "axios";
 export default function Dashboard() {
   const [activeMidTab, setActiveMidTab] = useState("All Tickets");
   const [tickets, setTickets] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const getChats = async () => {
@@ -43,6 +44,21 @@ export default function Dashboard() {
     return `${Math.floor(diff / 86400)} days ago`;
   }
 
+  const filteredTickets = tickets
+    .filter((ticket) => {
+      if (activeMidTab === "Resolved") return ticket.status === "Resolved";
+      if (activeMidTab === "Unresolved") return ticket.status === "Unresolved";
+      return true;
+    })
+    .filter((ticket) => {
+      const lowerSearch = searchTerm.toLowerCase();
+      const ticketTitle = ticket.title?.toLowerCase() || "";
+      const username = ticket.userDetails?.name?.toLowerCase() || "";
+      return (
+        ticketTitle.includes(lowerSearch) || username.includes(lowerSearch)
+      );
+    });
+
   const midTabs = ["All Tickets", "Resolved", "Unresolved"];
 
   return (
@@ -53,7 +69,11 @@ export default function Dashboard() {
           <h3 className="heading-dashboard">Dashboard</h3>
           <div className="search-panel-dashboard">
             <img src={search} alt="" />
-            <h4>Search for ticket</h4>
+            <input
+              type="text"
+              placeholder="Search for ticket"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
           <div className="mid-level-tabs">
             {midTabs.map((tab) => (
@@ -72,43 +92,47 @@ export default function Dashboard() {
           </div>
           <div className="ticket-section">
             <div className="inner-ticket-section">
-              {tickets.map((ticket) => (
-                <div key={ticket.id} className="ticket-tab">
-                  <div className="ticket-upper-tab">
-                    <div className="ticket-heading-grp">
-                      <div className="ticket-dot"></div>
-                      <div className="ticket-name">{ticket.title}</div>
+              {filteredTickets.length > 0 ? (
+                filteredTickets.map((ticket) => (
+                  <div key={ticket.id} className="ticket-tab">
+                    <div className="ticket-upper-tab">
+                      <div className="ticket-heading-grp">
+                        <div className="ticket-dot"></div>
+                        <div className="ticket-name">{ticket.title}</div>
+                      </div>
+                      <div className="ticket-time">{ticket.date}</div>
                     </div>
-                    <div className="ticket-time">{ticket.date}</div>
-                  </div>
-                  <div className="ticket-lower-tab">
-                    <div className="ticket-message">{ticket.lastMsg}</div>
-                    <div className="time-ago">{getTimeAgo(ticket.date)}</div>
-                  </div>
-                  <div className="ticket-divider"></div>
-                  <div className="ticker-user-details">
-                    <div className="user-details-ticket">
-                      <div className="user-photo">
-                        <img className="pic" src={user} alt="" />
-                      </div>
-                      <div className="user">
-                        <h3>{ticket.userDetails.name}</h3>
-                        <p>{ticket.userDetails.phone}</p>
-                        <p>{ticket.userDetails.email}</p>
-                      </div>
-                      <div>
-                        <Link
-                          to="/contact"
-                          state={{ ticketId: ticket.id }}
-                          className="ticket-link"
-                        >
-                          Open Ticket
-                        </Link>
+                    <div className="ticket-lower-tab">
+                      <div className="ticket-message">{ticket.lastMsg}</div>
+                      <div className="time-ago">{getTimeAgo(ticket.date)}</div>
+                    </div>
+                    <div className="ticket-divider"></div>
+                    <div className="ticker-user-details">
+                      <div className="user-details-ticket">
+                        <div className="user-photo">
+                          <img className="pic" src={user} alt="" />
+                        </div>
+                        <div className="user">
+                          <h3>{ticket.userDetails.name}</h3>
+                          <p>{ticket.userDetails.phone}</p>
+                          <p>{ticket.userDetails.email}</p>
+                        </div>
+                        <div>
+                          <Link
+                            to="/contact"
+                            state={{ ticketId: ticket.id }}
+                            className="ticket-link"
+                          >
+                            Open Ticket
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                <p style={{ textAlign: "center" }}>No ticket found</p>
+              )}
             </div>
           </div>
         </div>

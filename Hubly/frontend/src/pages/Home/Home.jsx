@@ -18,9 +18,27 @@ import footer from "../../assets/footer.png";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import Chat from "../../components/Chat/Chat";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  if (isMobile) {
+    return <Chat />;
+  }
+
   return (
     <div>
       <div className="nav-div">

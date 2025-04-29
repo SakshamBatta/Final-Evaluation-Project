@@ -219,6 +219,15 @@
   margin-top: 20px;
 }
 
+.assign-msg {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  color: #8c8c8c;
+  margin-left: 55px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
 .admin-send-btn {
   position: absolute;
   width: 20px;
@@ -390,6 +399,57 @@
   border-radius: 50%;
 }
 
+.assign-confirmation {
+  width: 470px;
+  height: 141px;
+  position: absolute;
+  top: 330px;
+  right: 8px;
+  border-radius: 23px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 -4px 8px rgba(0, 0, 0, 0.08),
+    4px 0 8px rgba(0, 0, 0, 0.08), -4px 0 8px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  padding: 15px;
+}
+
+.assign-confirmation p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+.assign-confirmation .btns {
+  display: flex;
+  margin-top: 60px;
+  margin-left: 140px;
+  width: 100%;
+  gap: 10px;
+}
+
+.assign-confirmation .btns .btn1 {
+  width: 150px;
+  height: 34px;
+  border-radius: 15px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #afafaf;
+  background-color: white;
+  cursor: pointer;
+}
+.assign-confirmation .btns .btn2 {
+  width: 150px;
+  height: 34px;
+  border-radius: 15px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fafbfc;
+  background-color: #184e7f;
+  cursor: pointer;
+}
+
 .default-ticket-status {
   display: flex;
   align-items: center;
@@ -494,4 +554,9 @@
   display: flex;
   flex-direction: column;
   gap: 11px;
+}
+
+.disabled-dropdown {
+  pointer-events: none;
+  opacity: 0.9;
 }
