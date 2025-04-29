@@ -1,4 +1,5 @@
 const InvitedTeam = require("../models/InvitedTeam");
+const Ticket = require("../models/Ticket");
 const User = require("../models/User");
 
 exports.inviteTeamMember = async (req, res) => {
@@ -30,28 +31,43 @@ exports.getTeam = async (req, res) => {
     );
 
     const members = await InvitedTeam.find({ invited_by: adminId }).select(
-      "_id username email phone"
+      "_id username email phone user_id"
     );
 
     const team = [
-      {
-        id: admin._id,
-        name: `${admin.firstName} ${admin.lastName}`.trim(),
-        email: admin.email,
-        role: admin.role,
-      },
+      // {
+      //   id: admin._id,
+      //   name: `${admin.firstName}`.trim(),
+      //   email: admin.email,
+      //   role: admin.role,
+      // },
       ...members.map((member) => ({
         id: member._id,
         name: member.username,
         email: member.email,
         phone: member.phone,
         role: "team_member",
+        user_id: member.user_id,
       })),
     ];
 
     res.status(200).json({ success: true, team });
   } catch (err) {
     console.error("Error fetching team:", err);
+    res.status(500).json({ success: false, message: "Something went wrong" });
+  }
+};
+
+exports.deleteTeamMember = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    await InvitedTeam.deleteOne({ email: email });
+    await User.deleteOne({ email: email });
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting team member:", err);
     res.status(500).json({ success: false, message: "Something went wrong" });
   }
 };

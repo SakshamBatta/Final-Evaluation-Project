@@ -19,33 +19,38 @@ const messageSchema = new mongoose.Schema(
   { _id: false }
 );
 
-const ticketSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  phone: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  messages: [messageSchema],
+const ticketSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    messages: [messageSchema],
 
-  assigned_to: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    default: null,
-  },
+    assigned_to: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
+    },
 
-  status: {
-    type: String,
-    enum: ["unresolved", "resolved"],
-    default: "unresolved",
+    status: {
+      type: String,
+      enum: ["Unresolved", "Resolved"],
+      default: "Unresolved",
+    },
   },
-});
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model("Ticket", ticketSchema);

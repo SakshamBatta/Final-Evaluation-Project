@@ -88,3 +88,93 @@ exports.replyToTicket = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+exports.getAllTickets = async (req, res) => {
+  try {
+    const userId = req.id;
+    const userRole = req.role;
+
+    let ticketsQuery = {};
+
+    if (userRole !== "admin") {
+      ticketsQuery = { assigned_to: userId };
+    }
+    const tickets = await Ticket.find(ticketsQuery).sort({ updaredAt: -1 });
+
+    const formattedTickets = tickets.map((ticket, index) => {
+      const lastMessage = ticket.messages?.[ticket.messages.length - 1];
+
+      const createdDate = new Date(ticket.createdAt);
+      const year = createdDate.getFullYear();
+      const month = (createdDate.getMonth() + 1).toString().padStart(2, "0");
+      const day = createdDate.getDate().toString().padStart(2, "0");
+
+      const ticketTitle = `Ticket# ${year}-0${month}${day}`;
+
+      return {
+        id: ticket._id,
+        title: ticketTitle,
+        name: `Chat ${index + 1}`,
+        status: ticket.status,
+        assigned_to: ticket.assigned_to,
+        lastMsg: lastMessage?.text || "No message yet",
+        date: lastMessage
+          ? new Date(lastMessage.timestamp).toLocaleDateString("en-IN", {
+              timeZone: "Asia/Kolkata",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          : "",
+        userDetails: {
+          name: ticket.name,
+          email: ticket.email,
+          phone: ticket.phone,
+        },
+        messages: ticket.messages.map((msg) => ({
+          from: msg.sender === "customer" ? "user" : "admin",
+          text: msg.text,
+        })),
+      };
+    });
+
+    res.json(formattedTickets);
+  } catch (err) {
+    console.error("Error fetching all tickets:", err);
+    res.status(500).json({ success: false, message: "Something went wrong" });
+  }
+};
+
+exports.resolveTicket = async (req, res) => {
+  const { ticketId } = req.params;
+
+  const ticket = await Ticket.findByIdAndUpdate(ticketId, {
+    status: "Resolved",
+  });
+
+  if (!ticket) {
+    return res.status(400).json({ message: "No ticket found" });
+  }
+
+  res.status(200).json({ message: "Ticket resolved successfully" });
+};
+
+exports.assignTicket = async (req, res) => {
+  try {
+    const { ticketId, memberId } = req.body;
+
+    const ticket = await Ticket.findById(ticketId);
+
+    if (!ticket) {
+      return res.status(404).json({ message: "Ticket not found" });
+    }
+
+    ticket.assigned_to = memberId;
+    await ticket.save();
+
+    res.json({ success: true, message: "Ticket assigned successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ smessage: "Internal Server Error" });
+  }
+};
