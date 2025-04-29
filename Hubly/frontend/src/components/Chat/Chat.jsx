@@ -35,6 +35,18 @@ export default function Chat() {
   const [userMessage, setUserMessage] = useState("");
   const [ticketCreated, setTicketCreated] = useState(false);
   const [ticketId, setTicketId] = useState(null);
+  const [messages, setMessages] = useState([]);
+
+  const fetchMessages = async (id) => {
+    try {
+      const res = await axios.get(
+        `https://hubly-0zgf.onrender.com/api/ticket/${id}/messages`
+      );
+      setMessages(res.data.messages);
+    } catch (error) {
+      console.error("Error fetching messages:", error);
+    }
+  };
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -49,8 +61,13 @@ export default function Chat() {
       );
       setTicketCreated(true);
       setTicketId(response.data.existingTicket._id);
+      localStorage.setItem("ticketId", response.data.existingTicket._id);
+      fetchMessages(response.data.existingTicket._id);
     } catch (error) {
-      console.error("Ticket create error:", error);
+      console.error(
+        "Ticket create error:",
+        error?.response?.data || error.message
+      );
     }
   };
 
@@ -63,7 +80,17 @@ export default function Chat() {
       }
     );
     setUserMessage("");
+    fetchMessages(ticketId);
   };
+
+  useEffect(() => {
+    const existingTicketId = localStorage.getItem("ticketId");
+    if (existingTicketId) {
+      setTicketCreated(true);
+      setTicketId(existingTicketId);
+      fetchMessages(existingTicketId);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchChabotSettings = async () => {
@@ -121,63 +148,77 @@ export default function Chat() {
                 <p>Hubly</p>
               </div>
             </div>
-            <div
-              className="view-main-chat"
-              style={{ backgroundColor: backgroundColor }}
-            >
-              <div className="view-main-div1-chat">
-                <img src={Avatar} alt="" />
-                <div className="custom-message-chat">
-                  <div className="message1-chat">{customMessage1}</div>
-                  <div className="message2-chat">{customMessage2}</div>
+            <div className="chat-content-wrapper">
+              <div
+                className="view-main-chat"
+                style={{ backgroundColor: backgroundColor }}
+              >
+                <div className="view-main-div1-chat">
+                  <img src={Avatar} alt="" />
+                  <div className="custom-message-chat">
+                    <div className="message1-chat">{customMessage1}</div>
+                    <div className="message2-chat">{customMessage2}</div>
+                  </div>
                 </div>
-              </div>
-              <div className="view-main-div2-chat">
-                <h4>Introduce Yourself</h4>
-                <form className="chatbot-introduction-form-chat">
-                  <label>Your name</label>
-                  <input
-                    type="text"
-                    value={userFormData.name}
-                    placeholder={customFormData.name}
-                    onChange={(e) => {
-                      setUserFormData({
-                        ...userFormData,
-                        name: e.target.value,
-                      });
-                    }}
-                  />
-                  <hr />
-                  <label>Your Phone</label>
-                  <input
-                    type="text"
-                    value={userFormData.phone}
-                    placeholder={customFormData.phone}
-                    onChange={(e) => {
-                      setUserFormData({
-                        ...userFormData,
-                        phone: e.target.value,
-                      });
-                    }}
-                  />
-                  <hr />
-                  <label>Your Email</label>
-                  <input
-                    type="text"
-                    value={userFormData.email}
-                    placeholder={customFormData.email}
-                    onChange={(e) => {
-                      setUserFormData({
-                        ...userFormData,
-                        email: e.target.value,
-                      });
-                    }}
-                  />
-                  <hr />
-                  <button onClick={handleSave}>
-                    {customFormData.buttonText}
-                  </button>
-                </form>
+                <div className="view-main-div2-chat">
+                  <h4>Introduce Yourself</h4>
+                  <form className="chatbot-introduction-form-chat">
+                    <label>Your name</label>
+                    <input
+                      type="text"
+                      value={userFormData.name}
+                      placeholder={customFormData.name}
+                      onChange={(e) => {
+                        setUserFormData({
+                          ...userFormData,
+                          name: e.target.value,
+                        });
+                      }}
+                    />
+                    <hr />
+                    <label>Your Phone</label>
+                    <input
+                      type="text"
+                      value={userFormData.phone}
+                      placeholder={customFormData.phone}
+                      onChange={(e) => {
+                        setUserFormData({
+                          ...userFormData,
+                          phone: e.target.value,
+                        });
+                      }}
+                    />
+                    <hr />
+                    <label>Your Email</label>
+                    <input
+                      type="text"
+                      value={userFormData.email}
+                      placeholder={customFormData.email}
+                      onChange={(e) => {
+                        setUserFormData({
+                          ...userFormData,
+                          email: e.target.value,
+                        });
+                      }}
+                    />
+                    <hr />
+                    <button onClick={handleSave}>
+                      {customFormData.buttonText}
+                    </button>
+                  </form>
+                </div>
+                <div className="chat-messages-container">
+                  {messages.map((msg, index) => (
+                    <div
+                      key={index}
+                      className={`message-bubble ${
+                        msg.sender === "admin" ? "left" : "right"
+                      }`}
+                    >
+                      {msg.text}
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="view-main-div3-chat">
                 <input
