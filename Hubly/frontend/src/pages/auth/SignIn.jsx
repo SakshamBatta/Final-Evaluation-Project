@@ -26,10 +26,13 @@ export default function SignIn() {
       return;
     }
 
-    const response = await axios.post(`http://localhost:3000/api/auth/login`, {
-      email: formData.userName,
-      password: formData.password,
-    });
+    const response = await axios.post(
+      `https://hubly-0zgf.onrender.com/api/auth/login`,
+      {
+        email: formData.userName,
+        password: formData.password,
+      }
+    );
 
     if (response.status === 200) {
       toast.success("Logged In Successfully");

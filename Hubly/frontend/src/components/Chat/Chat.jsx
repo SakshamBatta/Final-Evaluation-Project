@@ -40,7 +40,7 @@ export default function Chat() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/ticket/create`,
+        `https://hubly-0zgf.onrender.com/api/ticket/create`,
         {
           name: userFormData.name,
           phone: userFormData.phone,
@@ -56,19 +56,25 @@ export default function Chat() {
 
   const sendMessage = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:3000/api/ticket/${ticketId}/message`, {
-      text: userMessage,
-    });
+    await axios.post(
+      `https://hubly-0zgf.onrender.com/api/ticket/${ticketId}/message`,
+      {
+        text: userMessage,
+      }
+    );
     setUserMessage("");
   };
 
   useEffect(() => {
     const fetchChabotSettings = async () => {
-      const res = await axios.get(`http://localhost:3000/api/chatbot/get`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await axios.get(
+        `https://hubly-0zgf.onrender.com/api/chatbot/get`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       const data = res.data.chatbot;
 
       if (data) {

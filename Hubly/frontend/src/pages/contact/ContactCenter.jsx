@@ -58,7 +58,7 @@ export default function ContactCenter() {
     const getChats = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/ticket/get/tickets`,
+          `https://hubly-0zgf.onrender.com/api/ticket/get/tickets`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -79,7 +79,7 @@ export default function ContactCenter() {
     const fetchTeam = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/admin/get-team`,
+          `https://hubly-0zgf.onrender.com/api/admin/get-team`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -96,7 +96,7 @@ export default function ContactCenter() {
 
   const sendAdminMessage = async () => {
     await axios.post(
-      `http://localhost:3000/api/ticket/${selectedChat.id}/reply`,
+      `https://hubly-0zgf.onrender.com/api/ticket/${selectedChat.id}/reply`,
       {
         sender: "admin",
         text: adminMessage,
@@ -108,7 +108,7 @@ export default function ContactCenter() {
 
   const resolveTicket = async () => {
     await axios.put(
-      `http://localhost:3000/api/ticket/${selectedChat.id}/resolve`,
+      `https://hubly-0zgf.onrender.com/api/ticket/${selectedChat.id}/resolve`,
       {},
       {
         headers: {
@@ -127,7 +127,7 @@ export default function ContactCenter() {
 
   const assignMember = async () => {
     await axios.put(
-      `http://localhost:3000/api/ticket/assign`,
+      `https://hubly-0zgf.onrender.com/api/ticket/assign`,
       {
         ticketId: selectedChat.id,
         memberId: confirmAssignMember.user_id,

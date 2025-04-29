@@ -29,7 +29,7 @@ export default function Analytics() {
   useEffect(() => {
     const getResolvedTickets = async () => {
       const res = await axios.get(
-        `http://localhost:3000/api/analytics/resolved`,
+        `https://hubly-0zgf.onrender.com/api/analytics/resolved`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -44,7 +44,7 @@ export default function Analytics() {
   useEffect(() => {
     const getTotalChats = async () => {
       const res = await axios.get(
-        `http://localhost:3000/api/analytics/total-chats`,
+        `https://hubly-0zgf.onrender.com/api/analytics/total-chats`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -66,57 +66,10 @@ export default function Analytics() {
     Legend
   );
 
-  // const missedChatTimestamps = [
-  //   "2024-04-01T10:00:00Z", // Week 1
-  //   "2024-04-02T12:00:00Z", // Week 1
-  //   "2024-04-03T14:30:00Z", // Week 1
-  //   "2024-04-05T16:00:00Z", // Week 1
-  //   "2024-04-07T09:00:00Z", // Week 1
-  //   "2024-04-03T14:30:00Z", // Week 1
-  //   "2024-04-05T16:00:00Z", // Week 1
-  //   "2024-04-07T09:00:00Z", // Week 1
-  //   "2024-04-03T14:30:00Z", // Week 1
-  //   "2024-04-05T16:00:00Z", // Week 1
-  //   "2024-04-07T09:00:00Z", // Week 1
-  //   "2024-04-08T11:00:00Z", // Week 2
-  //   "2024-04-10T15:00:00Z", // Week 2
-  //   "2024-04-12T13:00:00Z", // Week 2
-  //   "2024-04-14T18:00:00Z", // Week 2
-  //   "2024-04-15T17:00:00Z", // Week 2
-  //   "2024-04-10T15:00:00Z", // Week 2
-  //   "2024-04-12T13:00:00Z", // Week 2
-  //   "2024-04-14T18:00:00Z", // Week 2
-  //   "2024-04-15T17:00:00Z", // Week 2
-  //   "2024-04-17T09:30:00Z", // Week 3
-  //   "2024-04-18T16:15:00Z", // Week 3
-  //   "2024-04-19T11:00:00Z", // Week 3
-  //   "2024-04-21T12:45:00Z", // Week 3
-  //   "2024-04-23T14:30:00Z", // Week 4
-  //   "2024-04-24T10:30:00Z", // Week 4
-  //   "2024-04-25T15:30:00Z", // Week 4
-  //   "2024-04-27T17:30:00Z", // Week 5
-  //   "2024-04-30T11:00:00Z", // Week 5
-  //   "2024-05-02T13:30:00Z", // Week 5
-  //   "2024-05-03T14:45:00Z", // Week 6
-  //   "2024-05-04T12:00:00Z", // Week 6
-  //   "2024-05-03T14:45:00Z", // Week 6
-  //   "2024-05-04T12:00:00Z", // Week 6
-  //   "2024-05-03T14:45:00Z", // Week 6
-  //   "2024-05-04T12:00:00Z", // Week 6
-  //   "2024-05-03T14:45:00Z", // Week 6
-  //   "2024-05-04T12:00:00Z", // Week 6
-  //   "2024-05-03T14:45:00Z", // Week 6
-  //   "2024-05-04T12:00:00Z", // Week 6
-  //   "2024-05-03T14:45:00Z", // Week 6
-  //   "2024-05-04T12:00:00Z", // Week 6
-  //   "2024-05-03T14:45:00Z", // Week 6
-  //   "2024-05-04T12:00:00Z", // Week 6
-  // ];
-
   useEffect(() => {
     const fetchReplyTime = async () => {
       const res = await axios.get(
-        `http://localhost:3000/api/analytics/reply-time`,
+        `https://hubly-0zgf.onrender.com/api/analytics/reply-time`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -133,7 +86,7 @@ export default function Analytics() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
-        `http://localhost:3000/api/analytics/missed-chats`,
+        `https://hubly-0zgf.onrender.com/api/analytics/missed-chats`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

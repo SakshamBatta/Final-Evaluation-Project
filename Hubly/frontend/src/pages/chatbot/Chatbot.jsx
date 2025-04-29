@@ -56,11 +56,14 @@ export default function Chatbot() {
 
   useEffect(() => {
     const fetchChabotSettings = async () => {
-      const res = await axios.get(`http://localhost:3000/api/chatbot/get`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await axios.get(
+        `https://hubly-0zgf.onrender.com/api/chatbot/get`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       const data = res.data.chatbot;
 
       if (data) {
@@ -124,7 +127,7 @@ export default function Chatbot() {
 
   const handleSave = async () => {
     const res = await axios.post(
-      `http://localhost:3000/api/chatbot/save`,
+      `https://hubly-0zgf.onrender.com/api/chatbot/save`,
       {
         dataToSend,
       },
