@@ -6,13 +6,13 @@ import SignUp from "./pages/auth/SignUp";
 import Dashboard from "./pages/dashboard/Dashboard";
 import SignIn from "./pages/auth/SignIn";
 import Home from "./pages/Home/Home";
-import Team from "./pages/team/team";
 import PrivateRoute from "./utils/PrivateRoute";
 import Settings from "./pages/settings/Settings";
 import ContactCenter from "./pages/contact/ContactCenter";
 import Chatbot from "./pages/chatbot/Chatbot";
 import { ChatbotProvider } from "./context/ChatbotContext";
 import Analytics from "./pages/analytics/Analytics";
+import TeamPage from "./pages/team/TeamPage";
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
             path="/team"
             element={
               <PrivateRoute>
-                <Team />
+                <TeamPage />
               </PrivateRoute>
             }
           />
