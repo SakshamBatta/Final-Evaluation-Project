@@ -11,7 +11,7 @@ exports.createTicket = async (req, res) => {
 
     const admin = await User.findOne({ role: "admin" });
 
-    let existingTicket = await Ticket.findOne({ phone, status: "unresolved" });
+    let existingTicket = await Ticket.findOne({ phone, status: "Unresolved" });
 
     if (!existingTicket) {
       existingTicket = new Ticket({
@@ -176,5 +176,23 @@ exports.assignTicket = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ smessage: "Internal Server Error" });
+  }
+};
+
+exports.getMessages = async (req, res) => {
+  try {
+    const { ticketId } = req.params;
+
+    const existingTicket = await Ticket.findById(ticketId);
+
+    if (!existingTicket) {
+      return res.status(400).json({ message: "No ticket found with this Id" });
+    }
+    const messages = existingTicket.messages;
+
+    res.status(200).json({ messages });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };

@@ -9,5 +9,6 @@ router.post("/:ticketId/reply", ticketController.replyToTicket);
 router.get("/get/tickets", verifyAdmin, ticketController.getAllTickets);
 router.put("/:ticketId/resolve", verifyAdmin, ticketController.resolveTicket);
 router.put("/assign", verifyAdmin, ticketController.assignTicket);
+router.get("/:ticketId/messages", ticketController.getMessages);
 
 module.exports = router;
