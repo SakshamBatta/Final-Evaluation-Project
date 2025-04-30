@@ -564,3 +564,14 @@
 .home-symbol {
   cursor: pointer;
 }
+
+.missed-chat-label {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #ff0000;
+  position: relative;
+  top: 60px;
+  left: 230px;
+  margin-bottom: 10px;
+}

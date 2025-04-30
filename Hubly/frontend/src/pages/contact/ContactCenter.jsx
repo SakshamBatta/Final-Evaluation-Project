@@ -26,6 +26,7 @@ export default function ContactCenter() {
   const [resolvedConfirmation, setResolvedConfirmation] = useState(false);
   const [assignConfirmation, setAssignConfirmation] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [missedTicketIds, setMissedTicketIds] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -36,6 +37,8 @@ export default function ContactCenter() {
       setCurrentUser(decoded);
     }
   }, []);
+
+  console.log(currentUser);
 
   useEffect(() => {
     if (location.state?.ticketId && chats.length > 0) {
@@ -148,6 +151,24 @@ export default function ContactCenter() {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get(
+        `http://localhost:3000/api/analytics/missed-chats`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      setMissedTicketIds(res.data.missedTicketIds);
+    };
+    fetchData();
+  }, []);
+
+  console.log(selectedChat);
+  console.log(missedTicketIds);
+
   return (
     <>
       <div className="container-dashboard">
@@ -217,6 +238,14 @@ export default function ContactCenter() {
                               <div className="msg-name">{senderName}</div>
                             </div>
                           )}
+                          {index === 0 &&
+                            missedTicketIds?.includes(
+                              String(selectedChat.id)
+                            ) && (
+                              <p className="missed-chat-label">
+                                Replying to missed chat
+                              </p>
+                            )}
                           <div className="msg-bubble">{msg.text}</div>
                         </div>
                       );
