@@ -11,21 +11,11 @@ export default function Welcome() {
   useEffect(() => {
     const fetchChabotSettings = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/chatbot/get`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
+        `https://hubly-0zgf.onrender.com/api/chatbot/get-message`
       );
-      const data = res.data.chatbot;
+      const data = res.data.message;
 
-      if (data) {
-        setWelcomeMessage(
-          data.welcomeMessage ||
-            "👋 Want to chat about Hubly? I'm an\n chatbot here to help you find your way."
-        );
-      }
+      setWelcomeMessage(data);
     };
 
     fetchChabotSettings();
