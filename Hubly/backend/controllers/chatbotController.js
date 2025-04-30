@@ -27,3 +27,11 @@ exports.getChatbotSettings = async (req, res) => {
     chatbot,
   });
 };
+exports.getChatbotMessage = async (req, res) => {
+  const chatbot = await Chatbot.findOne({});
+  const message = chatbot.welcomeMessage;
+
+  return res.status(200).json({
+    message,
+  });
+};
