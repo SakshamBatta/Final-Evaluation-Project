@@ -45,4 +45,8 @@
   .welcome-msg-div-comp {
     left: -250px;
   }
+
+  .welcome-comp p {
+    color: red;
+  }
 }
