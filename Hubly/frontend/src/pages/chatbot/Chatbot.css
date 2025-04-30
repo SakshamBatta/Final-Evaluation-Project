@@ -14,7 +14,6 @@
 .chatbot-preview {
   width: 65%;
   height: 100%;
-  /* border: 1px solid red; */
 }
 
 .chatbot-view {
@@ -28,7 +27,6 @@
 .view-header {
   width: 374px;
   height: 68px;
-  /* background-color: #33475b; */
   border-top-left-radius: 8px;
   border-top-right-radius: 9px;
   padding-top: 14px;
@@ -191,7 +189,6 @@ hr {
 }
 
 .welcome {
-  /* border: 1px solid black; */
   width: 245px;
   height: 116px;
   margin-left: 320px;
@@ -226,7 +223,6 @@ hr {
 
 .chatbot-customize {
   width: 35%;
-  /* border: 1px solid; */
 }
 
 .header-color-card {
@@ -592,7 +588,7 @@ hr {
   z-index: 1;
 }
 .picker-column::-webkit-scrollbar {
-  display: none; /* Chrome ke liye */
+  display: none;
 }
 
 .picker-item {
