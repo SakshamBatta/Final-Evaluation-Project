@@ -154,7 +154,7 @@ export default function ContactCenter() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
-        `http://localhost:3000/api/analytics/missed-chats`,
+        `https://hubly-0zgf.onrender.com/api/analytics/missed-chats`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
