@@ -52,6 +52,7 @@ exports.getMissedChats = async (req, res) => {
     const tickets = await Ticket.find({}).lean();
 
     const missedChatTimestamps = [];
+    const missedTicketIdsSet = new Set();
 
     for (const ticket of tickets) {
       const customerMessages = ticket.messages.filter(
@@ -71,6 +72,7 @@ exports.getMissedChats = async (req, res) => {
 
         if (!adminReply) {
           missedChatTimestamps.push(customerMsg.timestamp);
+          missedTicketIdsSet.add(ticket._id.toString());
         }
       }
     }
@@ -78,6 +80,7 @@ exports.getMissedChats = async (req, res) => {
     res.status(200).json({
       totalMissedChats: missedChatTimestamps.length,
       missedChatTimestamps,
+      missedTicketIds: [...missedTicketIdsSet],
     });
   } catch (err) {
     console.error(err);
