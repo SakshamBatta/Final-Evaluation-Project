@@ -35,12 +35,6 @@ exports.getTeam = async (req, res) => {
     );
 
     const team = [
-      // {
-      //   id: admin._id,
-      //   name: `${admin.firstName}`.trim(),
-      //   email: admin.email,
-      //   role: admin.role,
-      // },
       ...members.map((member) => ({
         id: member._id,
         name: member.username,
