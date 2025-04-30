@@ -115,6 +115,7 @@ label {
   letter-spacing: 0.5px;
   color: white;
   font-family: "Poppins", sans-serif;
+  cursor: pointer;
 }
 
 .footer-signup {

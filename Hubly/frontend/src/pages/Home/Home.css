@@ -467,3 +467,34 @@
 .footer-img {
   margin-top: 150px;
 }
+
+@media (max-width: 768px) {
+  .nav-div {
+    display: none;
+  }
+
+  .section1 {
+    display: none;
+  }
+
+  .mid-div {
+    display: none;
+  }
+
+  .third-div {
+    display: none;
+  }
+
+  .fourth-div {
+    display: none;
+  }
+  .fifth-div {
+    display: none;
+  }
+  .sixth-div {
+    display: none;
+  }
+  .seventh-div {
+    display: none;
+  }
+}

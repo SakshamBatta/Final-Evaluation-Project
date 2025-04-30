@@ -100,7 +100,7 @@ export default function Dashboard() {
                         <div className="ticket-dot"></div>
                         <div className="ticket-name">{ticket.title}</div>
                       </div>
-                      <div className="ticket-time">{ticket.date}</div>
+                      <div className="ticket-time">Posted on {ticket.date}</div>
                     </div>
                     <div className="ticket-lower-tab">
                       <div className="ticket-message">{ticket.lastMsg}</div>

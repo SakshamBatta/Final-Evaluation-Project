@@ -1,7 +1,7 @@
 import SideBar from "../../components/SideBar/SideBar";
 import homeSymbol from "../../assets/homeSymbol.png";
 import "./ContactCenter.css";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import user from "../../assets/user.png";
 import { useEffect, useState } from "react";
 import name from "../../assets/name.png";
@@ -27,6 +27,7 @@ export default function ContactCenter() {
   const [assignConfirmation, setAssignConfirmation] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -180,7 +181,12 @@ export default function ContactCenter() {
             <div className="contact-chat-section">
               <div className="chat-div-upper">
                 {selectedChat ? selectedChat.title : ""}
-                <img src={homeSymbol} alt="" />
+                <img
+                  className="home-symbol"
+                  src={homeSymbol}
+                  alt=""
+                  onClick={() => navigate("/dashboard")}
+                />
               </div>
               <div className="chat-div-lower">
                 <div className="chat-date-div">

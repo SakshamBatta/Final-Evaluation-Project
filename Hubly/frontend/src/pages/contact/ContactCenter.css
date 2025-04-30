@@ -560,3 +560,7 @@
   pointer-events: none;
   opacity: 0.9;
 }
+
+.home-symbol {
+  cursor: pointer;
+}

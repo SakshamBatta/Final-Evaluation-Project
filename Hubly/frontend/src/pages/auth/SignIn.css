@@ -90,6 +90,7 @@ label {
   color: white;
   margin-top: 50px;
   font-family: "Inter", sans-serif;
+  cursor: pointer;
 }
 
 .lower-footer {

@@ -18,26 +18,12 @@ import footer from "../../assets/footer.png";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import Chat from "../../components/Chat/Chat";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Welcome from "../../components/welcome/Welcome";
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  if (isMobile) {
-    return <Chat />;
-  }
 
   return (
     <div>
@@ -80,7 +66,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Chat />
+      {!isChatOpen && <Welcome />}
+      <Chat isChatOpen={isChatOpen} setIsChatOpen={setIsChatOpen} />
       <div className="mid-div">
         <img src={Adobe} alt="" />
         <img src={elastic} alt="" />

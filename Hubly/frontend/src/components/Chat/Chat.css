@@ -223,3 +223,9 @@ hr {
   color: #fff;
   border-bottom-right-radius: 2px;
 }
+
+@media (max-width: 768px) {
+  .chatbot-popup-chat {
+    left: -11px;
+  }
+}

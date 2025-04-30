@@ -8,6 +8,7 @@ import editPencil from "../../assets/editPencil.png";
 import { useEffect, useRef } from "react";
 import axios from "axios";
 import { useChatbot } from "../../context/ChatbotContext";
+import { toast } from "react-toastify";
 
 export default function Chatbot() {
   const {
@@ -139,7 +140,7 @@ export default function Chatbot() {
     );
 
     if (res.status === 200) {
-      alert("Chatbot settings saved successfully");
+      toast.success("Chatbot settings saved successfully");
     }
   };
 

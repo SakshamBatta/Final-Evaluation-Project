@@ -8,7 +8,7 @@ import send from "../../assets/send.png";
 import { useChatbot } from "../../context/ChatbotContext";
 import axios from "axios";
 
-export default function Chat() {
+export default function Chat({ isChatOpen, setIsChatOpen }) {
   const {
     headerColor,
     backgroundColor,
@@ -134,7 +134,10 @@ export default function Chat() {
           className="chatbot-icon-chat"
           src={!chatOpen ? chat : chatCancel}
           alt=""
-          onClick={() => setChatOpen(!chatOpen)}
+          onClick={() => {
+            setChatOpen(!chatOpen);
+            setIsChatOpen(!isChatOpen);
+          }}
         />
 
         {chatOpen && (
