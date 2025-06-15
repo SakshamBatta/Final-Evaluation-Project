@@ -14,7 +14,7 @@ export function AddTeamModal({ setOpenAddModal }) {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://hubly-0zgf.onrender.com/api/admin/invite-member",
+        "https://hubly-7rev.onrender.com/api/admin/invite-member",
         {
           username: formData.username,
           email: formData.email,

@@ -11,7 +11,7 @@ export default function Welcome() {
   useEffect(() => {
     const fetchChabotSettings = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/chatbot/get-message`
+        `https://hubly-7rev.onrender.com/api/chatbot/get-message`
       );
       const data = res.data.message;
 

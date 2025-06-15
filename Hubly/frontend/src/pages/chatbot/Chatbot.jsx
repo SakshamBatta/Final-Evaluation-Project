@@ -58,7 +58,7 @@ export default function Chatbot() {
   useEffect(() => {
     const fetchChabotSettings = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/chatbot/get`,
+        `https://hubly-7rev.onrender.com/api/chatbot/get`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -128,7 +128,7 @@ export default function Chatbot() {
 
   const handleSave = async () => {
     const res = await axios.post(
-      `https://hubly-0zgf.onrender.com/api/chatbot/save`,
+      `https://hubly-7rev.onrender.com/api/chatbot/save`,
       {
         dataToSend,
       },

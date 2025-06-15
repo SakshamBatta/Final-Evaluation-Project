@@ -51,7 +51,7 @@ export default function SignUp() {
     }
 
     const response = await axios.post(
-      `https://hubly-0zgf.onrender.com/api/auth/register`,
+      `https://hubly-7rev.onrender.com/api/auth/register`,
       {
         firstName: formData.firstName,
         lastName: formData.lastName,

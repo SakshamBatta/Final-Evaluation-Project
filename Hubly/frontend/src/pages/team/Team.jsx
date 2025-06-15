@@ -18,7 +18,7 @@ export default function Team() {
     const fetchTeam = async () => {
       try {
         const res = await axios.get(
-          `https://hubly-0zgf.onrender.com/api/admin/get-team`,
+          `https://hubly-7rev.onrender.com/api/admin/get-team`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -34,7 +34,7 @@ export default function Team() {
   }, []);
 
   const deleteMember = async () => {
-    await axios.delete(`https://hubly-0zgf.onrender.com/api/admin/delete`, {
+    await axios.delete(`https://hubly-7rev.onrender.com/api/admin/delete`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

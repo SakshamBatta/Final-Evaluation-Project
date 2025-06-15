@@ -40,7 +40,7 @@ export default function Chat({ isChatOpen, setIsChatOpen }) {
   const fetchMessages = async (id) => {
     try {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/ticket/${id}/messages`
+        `https://hubly-7rev.onrender.com/api/ticket/${id}/messages`
       );
       setMessages(res.data.messages);
     } catch (error) {
@@ -52,7 +52,7 @@ export default function Chat({ isChatOpen, setIsChatOpen }) {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `https://hubly-0zgf.onrender.com/api/ticket/create`,
+        `https://hubly-7rev.onrender.com/api/ticket/create`,
         {
           name: userFormData.name,
           phone: userFormData.phone,
@@ -74,7 +74,7 @@ export default function Chat({ isChatOpen, setIsChatOpen }) {
   const sendMessage = async (e) => {
     e.preventDefault();
     await axios.post(
-      `https://hubly-0zgf.onrender.com/api/ticket/${ticketId}/message`,
+      `https://hubly-7rev.onrender.com/api/ticket/${ticketId}/message`,
       {
         text: userMessage,
       }
@@ -95,7 +95,7 @@ export default function Chat({ isChatOpen, setIsChatOpen }) {
   useEffect(() => {
     const fetchChabotSettings = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/chatbot/get`,
+        `https://hubly-7rev.onrender.com/api/chatbot/get`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

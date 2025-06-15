@@ -62,7 +62,7 @@ export default function ContactCenter() {
     const getChats = async () => {
       try {
         const res = await axios.get(
-          `https://hubly-0zgf.onrender.com/api/ticket/get/tickets`,
+          `https://hubly-7rev.onrender.com/api/ticket/get/tickets`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -83,7 +83,7 @@ export default function ContactCenter() {
     const fetchTeam = async () => {
       try {
         const res = await axios.get(
-          `https://hubly-0zgf.onrender.com/api/admin/get-team`,
+          `https://hubly-7rev.onrender.com/api/admin/get-team`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -100,7 +100,7 @@ export default function ContactCenter() {
 
   const sendAdminMessage = async () => {
     await axios.post(
-      `https://hubly-0zgf.onrender.com/api/ticket/${selectedChat.id}/reply`,
+      `https://hubly-7rev.onrender.com/api/ticket/${selectedChat.id}/reply`,
       {
         sender: "admin",
         text: adminMessage,
@@ -112,7 +112,7 @@ export default function ContactCenter() {
 
   const resolveTicket = async () => {
     await axios.put(
-      `https://hubly-0zgf.onrender.com/api/ticket/${selectedChat.id}/resolve`,
+      `https://hubly-7rev.onrender.com/api/ticket/${selectedChat.id}/resolve`,
       {},
       {
         headers: {
@@ -131,7 +131,7 @@ export default function ContactCenter() {
 
   const assignMember = async () => {
     await axios.put(
-      `https://hubly-0zgf.onrender.com/api/ticket/assign`,
+      `https://hubly-7rev.onrender.com/api/ticket/assign`,
       {
         ticketId: selectedChat.id,
         memberId: confirmAssignMember.user_id,
@@ -154,7 +154,7 @@ export default function ContactCenter() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/analytics/missed-chats`,
+        `https://hubly-7rev.onrender.com/api/analytics/missed-chats`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

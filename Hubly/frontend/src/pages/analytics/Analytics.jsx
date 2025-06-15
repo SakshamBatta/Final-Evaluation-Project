@@ -29,7 +29,7 @@ export default function Analytics() {
   useEffect(() => {
     const getResolvedTickets = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/analytics/resolved`,
+        `https://hubly-7rev.onrender.com/api/analytics/resolved`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -44,7 +44,7 @@ export default function Analytics() {
   useEffect(() => {
     const getTotalChats = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/analytics/total-chats`,
+        `https://hubly-7rev.onrender.com/api/analytics/total-chats`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -69,7 +69,7 @@ export default function Analytics() {
   useEffect(() => {
     const fetchReplyTime = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/analytics/reply-time`,
+        `https://hubly-7rev.onrender.com/api/analytics/reply-time`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -86,7 +86,7 @@ export default function Analytics() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/analytics/missed-chats`,
+        `https://hubly-7rev.onrender.com/api/analytics/missed-chats`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

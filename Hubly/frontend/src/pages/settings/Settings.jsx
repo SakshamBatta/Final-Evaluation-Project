@@ -18,7 +18,7 @@ export default function Settings() {
   useEffect(() => {
     const getProfile = async () => {
       const res = await axios.get(
-        `https://hubly-0zgf.onrender.com/api/user/get-profile`,
+        `https://hubly-7rev.onrender.com/api/user/get-profile`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -42,7 +42,7 @@ export default function Settings() {
 
     try {
       const res = await axios.put(
-        `https://hubly-0zgf.onrender.com/api/user/update-profile`,
+        `https://hubly-7rev.onrender.com/api/user/update-profile`,
         {
           firstName: profile.firstName,
           lastName: profile.lastName,

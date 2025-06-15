@@ -16,7 +16,7 @@ export default function Dashboard() {
     const getChats = async () => {
       try {
         const res = await axios.get(
-          `https://hubly-0zgf.onrender.com/api/ticket/get/tickets`,
+          `https://hubly-7rev.onrender.com/api/ticket/get/tickets`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
